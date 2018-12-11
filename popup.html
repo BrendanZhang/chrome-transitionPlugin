@@ -1,16 +1,21 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <style>
-button {
-  height: 30px;
-  width: 30px;
-  outline: none;
-}
-    </style>
-  </head>
-  <body>
-    <button id="changeColor"></button>
-    <script src="popup.js"></script>
-  </body>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+		<style>
+			.popupContainer {
+				width: 60px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="popupConatiner">
+			<p>是否开启划词翻译</p>
+			<select id="select">
+				<option value="on">开启</option>
+				<option value="off">关闭</option>
+			</select>
+		</div>
+		<script src="./popup.js"></script>
+	</body>
 </html>

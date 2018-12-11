@@ -1,15 +1,13 @@
-let changeColor = document.getElementById('changeColor');
+let selectNode = document.querySelector("#select")
 
-chrome.storage.sync.get('color', function(data) {
-  changeColor.style.backgroundColor = data.color;
-  changeColor.setAttribute('value', data.color);
-});
-
-changeColor.onclick = function(element) {
-  let color = element.target.value;
-  chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
-    chrome.tabs.executeScript(
-      tabs[0].id,
-      {code: 'document.body.style.backgroundColor = "' + color + '";'});
-  });
-};
+selectNode.onchange = function() {
+	console.log(this.value)
+	chrome.tabs.query({ active: true, currentWindow: true }, tabs => {
+		chrome.tabs.sendMessage(tabs[0].id, { switch: this.value }, function(
+			response
+		) {
+			console.log("i am popup.js ,hear from content_script")
+			console.log(response)
+		})
+	})
+}
